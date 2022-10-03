@@ -5,7 +5,7 @@ JavaScript library for syncing two scrollbars with clear API
 ```bash
 npm install git+https://github.com/the94air/scryll.git
 ```
-# How to install
+# How to setup
 ```js
 import scryll from 'scryll'
 // or
