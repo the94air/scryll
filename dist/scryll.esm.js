@@ -1,32 +1,23 @@
-const scryll = (
-  selector1: string,
-  selector2: string,
-  config = { init: true, direction: 'vertical' }
-) => {
-  if (selector1 === undefined || selector2 === undefined) {
-    new Error('You most provide two selectors');
-    return;
+var scryll = function scryll(selector1, selector2, config) {
+  if (config === void 0) {
+    config = {
+      init: true,
+      direction: 'vertical'
+    };
   }
 
-  let preventScrollEvent: Boolean = false;
-  const element1: HTMLElement = document.querySelector(selector1) as HTMLElement;
-  const element2: HTMLElement = document.querySelector(selector2) as HTMLElement;
+  if (selector1 === undefined || selector2 === undefined) {
+    return;
+  }
+  var element1 = document.querySelector(selector1);
+  var element2 = document.querySelector(selector2);
 
   if (element1 === null || element2 === null) {
-    new Error('Invalid selector');
     return;
   }
 
-  const onScroll = () => {
-    if (preventScrollEvent) {
-      preventScrollEvent = false;
-      return;
-    }
-    preventScrollEvent = true;
-  };
+  var onElement1Scroll = function onElement1Scroll(event) {
 
-  const onElement1Scroll = (event: any): void => {
-    onScroll();
     if (config.direction === 'vertical') {
       element2.scrollTop = event.currentTarget.scrollTop;
     } else {
@@ -34,8 +25,8 @@ const scryll = (
     }
   };
 
-  const onElement2Scroll = (event: any): void => {
-    onScroll();
+  var onElement2Scroll = function onElement2Scroll(event) {
+
     if (config.direction === 'vertical') {
       element1.scrollTop = event.currentTarget.scrollTop;
     } else {
@@ -43,14 +34,12 @@ const scryll = (
     }
   };
 
-  const init = () => {
-    preventScrollEvent = false;
+  var init = function init() {
     element1.addEventListener('scroll', onElement1Scroll);
     element2.addEventListener('scroll', onElement2Scroll);
   };
 
-  const kill = () => {
-    preventScrollEvent = false;
+  var kill = function kill() {
     element1.removeEventListener('scroll', onElement1Scroll);
     element2.removeEventListener('scroll', onElement2Scroll);
   };
@@ -60,9 +49,10 @@ const scryll = (
   }
 
   return {
-    init,
-    kill,
+    init: init,
+    kill: kill
   };
 };
 
 export default scryll;
+//# sourceMappingURL=scryll.esm.js.map
