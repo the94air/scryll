@@ -1,38 +1,42 @@
 # Scryll
 JavaScript library for syncing two scrollbars with clear API
 
+# Demo
+https://stackblitz.com/edit/js-43xuy6
+
 # How to install
 ```bash
-npm install git+https://github.com/the94air/scryll.git
+npm install scryll
 ```
+
 # How to setup
 ```js
-import scryll from 'scryll'
+import scryll from "scryll";
 // or
-const scryll = require('scryll');
+const scryll = require("scryll");
 ```
 
 # How to use
 ```js
-const myScryll = scryll(".element1", ".element2")
+const myScryll = scryll(".element1", ".element2");
 
 // to stop sync scrolling
 myScryll.kill()
 ```
 
 ```js
-const myScryll = scryll(".element1", ".element2", { init: false })
+const myScryll = scryll(".element1", ".element2", { init: false });
 
 // to start sync scrolling
-myScryll.init()
+myScryll.init();
 
 // to stop sync scrolling
-myScryll.kill()
+myScryll.kill();
 ```
 
 ```js
 // You can use two values to control the scroll direction, vertical or horizontal
-const myScryll = scryll(".element1", ".element2", { direction: "horizontal" }) // default is vertical
+const myScryll = scryll(".element1", ".element2", { direction: "horizontal" }); // default is vertical
 ```
 # How to run
 ```bash
