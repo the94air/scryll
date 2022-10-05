@@ -47,3 +47,5 @@ npm run build
 
 ## License
 [MIT](https://github.com/the94air/scryll/blob/main/LICENSE) Copyright © 2022 - present, [Abdalla Arbab](https://abdalla.js.org) and [contributors](https://github.com/the94air/scryll/graphs/contributors)
+
+*Name thought of by the amazing [japser](https://github.com/jxpsert)*
