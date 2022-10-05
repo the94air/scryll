@@ -1,21 +1,35 @@
+interface Config {
+  init: boolean,
+  direction: "vertical" | "horizontal"
+}
+
+interface Event {
+  target: {
+    scrollTop: number
+    scrollLeft: number
+  }
+}
+
+interface Element {
+  scrollTop: number
+  scrollLeft: number
+  addEventListener: (name: string, listener: Function) => void
+  removeEventListener: (name: string, listener: Function) => void
+}
+
 const scryll = (
   selector1: string,
   selector2: string,
-  config = { init: true, direction: 'vertical' }
+  config: Config
 ) => {
-  if (selector1 === undefined || selector2 === undefined) {
-    new Error('You most provide two selectors');
-    return;
-  }
-
   let preventScrollEvent: Boolean = false;
-  const element1: HTMLElement = document.querySelector(selector1) as HTMLElement;
-  const element2: HTMLElement = document.querySelector(selector2) as HTMLElement;
-
-  if (element1 === null || element2 === null) {
-    new Error('Invalid selector');
-    return;
+  const isEmpty = (val: any) => (val === undefined || val === null);
+  const getElement = (val: string) => {
+    const el: Element = document.querySelector(val) as any;
+    return el
   }
+
+  config = Object.assign({}, { init: true, direction: 'vertical' }, config);
 
   const onScroll = () => {
     if (preventScrollEvent) {
@@ -25,31 +39,51 @@ const scryll = (
     preventScrollEvent = true;
   };
 
-  const onElement1Scroll = (event: any): void => {
+  function onElement1Scroll (event: Event) {
+    const element2 = getElement(selector2);
+
     onScroll();
     if (config.direction === 'vertical') {
-      element2.scrollTop = event.currentTarget.scrollTop;
+      element2.scrollTop = event.target.scrollTop;
     } else {
-      element2.scrollTop = event.currentTarget.scrollLeft;
+      element2.scrollLeft = event.target.scrollLeft;
     }
   };
 
-  const onElement2Scroll = (event: any): void => {
+  function onElement2Scroll (event: Event) {
+    const element1 = getElement(selector1);
+
     onScroll();
     if (config.direction === 'vertical') {
-      element1.scrollTop = event.currentTarget.scrollTop;
+      element1.scrollTop = event.target.scrollTop;
     } else {
-      element1.scrollTop = event.currentTarget.scrollLeft;
+      element1.scrollLeft = event.target.scrollLeft;
     }
   };
 
   const init = () => {
+    if (isEmpty(selector1) || isEmpty(selector2)) {
+      new Error('You most provide a valid selector');
+      return;
+    }
+
+    const element1 = getElement(selector1);
+    const element2 = getElement(selector2);
+
+    if (isEmpty(element1) || isEmpty(element2)) {
+      new Error('Scroll element could not be found');
+      return;
+    }
+
     preventScrollEvent = false;
     element1.addEventListener('scroll', onElement1Scroll);
     element2.addEventListener('scroll', onElement2Scroll);
   };
 
   const kill = () => {
+    const element1 = getElement(selector1);
+    const element2 = getElement(selector2);
+
     preventScrollEvent = false;
     element1.removeEventListener('scroll', onElement1Scroll);
     element2.removeEventListener('scroll', onElement2Scroll);

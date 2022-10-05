@@ -1,8 +1,9 @@
-declare const scryll: (selector1: string, selector2: string, config?: {
+interface Config {
     init: boolean;
-    direction: string;
-}) => {
+    direction: "vertical" | "horizontal";
+}
+declare const scryll: (selector1: string, selector2: string, config: Config) => {
     init: () => void;
     kill: () => void;
-} | undefined;
+};
 export default scryll;
