@@ -42,7 +42,7 @@ const myScryll = scryll(".element1", ".element2", { direction: "horizontal" }); 
 ```bash
 # clone repo
 # install dependencies
-npm dev # or yarn dev
+npm run dev # or yarn dev
 
 # production build
 npm run build
