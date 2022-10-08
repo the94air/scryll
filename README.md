@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.svg?raw=true" alt="Scryll" title="Scryll" height="100" />
+  <img src="src/assets/logo.svg?raw=true" alt="Scryll" title="Scryll" height="100" />
 </p>
 
 <p align="center">
