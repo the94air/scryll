@@ -1,11 +1,17 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "name": "scryll",
   "description": "JavaScript library for syncing two scrollbars",
   "homepage": "https://github.com/the94air/scryll",
   "author": "Abdalla Arbab",
   "license": "MIT",
-  "keywords": ["scryll", "sync", "scroll", "browser", "scrollbar"],
+  "keywords": [
+    "scryll",
+    "sync",
+    "scroll",
+    "browser",
+    "scrollbar"
+  ],
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "module": "dist/scryll.esm.js",
