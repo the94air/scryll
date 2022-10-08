@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/assets/logo.svg?raw=true" alt="Scryll" title="Scryll" height="100" />
+  <img src="https://github.com/the94air/scryll/blob/main/assets/logo.svg?raw=true" alt="Scryll" title="Scryll" height="100" />
 </p>
 
 <p align="center">
@@ -17,7 +17,7 @@ https://stackblitz.com/edit/js-43xuy6
 
 ## How to install
 ```bash
-npm install scryll
+npm install scryll # or yarn add scryll
 ```
 
 ## How to setup
